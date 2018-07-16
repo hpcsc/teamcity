@@ -1,7 +1,7 @@
 version: '3'
 services:
   server:
-    image: jetbrains/teamcity-server
+    image: jetbrains/teamcity-server:2018.1
     ports:
       - "8111:8111"
     volumes:
@@ -17,7 +17,7 @@ services:
       POSTGRES_PASSWORD: postgrespw
 
   agent-1:
-    image: jetbrains/teamcity-agent
+    image: jetbrains/teamcity-agent:2018.1
     depends_on:
       - server
     environment:
@@ -28,7 +28,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 
   agent-2:
-    image: jetbrains/teamcity-agent
+    image: jetbrains/teamcity-agent:2018.1
     depends_on:
       - server
     environment:
@@ -39,7 +39,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 
   agent-3:
-    image: jetbrains/teamcity-agent
+    image: jetbrains/teamcity-agent:2018.1
     depends_on:
       - server
     environment:
@@ -48,3 +48,21 @@ services:
     volumes:
       - ./agents/agent-3/conf:/data/teamcity_agent/conf
       - /var/run/docker.sock:/var/run/docker.sock
+
+  git-repo:
+    image: gogs/gogs:0.11.53
+    ports:
+      - "10022:22"
+      - "3000:3000"
+    depends_on:
+      - git-repo-db
+    volumes:
+      - ./gogs:/data
+
+  git-repo-db:
+    image: postgres:10.4
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespw

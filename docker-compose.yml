@@ -57,7 +57,8 @@ services:
     depends_on:
       - git-repo-db
     volumes:
-      - ./gogs:/data
+      - ./gogs/data:/data
+      - ./gogs/app.ini:/etc/gogs/conf/app.ini
 
   git-repo-db:
     image: postgres:${POSTGRES_VERSION}

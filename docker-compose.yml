@@ -1,7 +1,7 @@
 version: '3'
 services:
   server:
-    image: jetbrains/teamcity-server:2018.1
+    image: jetbrains/teamcity-server:${TEAMCITY_VERSION}
     ports:
       - "8111:8111"
     volumes:
@@ -17,7 +17,7 @@ services:
       POSTGRES_PASSWORD: postgrespw
 
   agent-1:
-    image: jetbrains/teamcity-agent:2018.1
+    image: jetbrains/teamcity-agent:${TEAMCITY_VERSION}
     depends_on:
       - server
     environment:
@@ -28,7 +28,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 
   agent-2:
-    image: jetbrains/teamcity-agent:2018.1
+    image: jetbrains/teamcity-agent:${TEAMCITY_VERSION}
     depends_on:
       - server
     environment:
@@ -39,7 +39,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 
   agent-3:
-    image: jetbrains/teamcity-agent:2018.1
+    image: jetbrains/teamcity-agent:${TEAMCITY_VERSION}
     depends_on:
       - server
     environment:
@@ -50,7 +50,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 
   git-repo:
-    image: gogs/gogs:0.11.53
+    image: gogs/gogs:${GOGS_VERSION}
     ports:
       - "10022:22"
       - "3000:3000"
@@ -60,7 +60,7 @@ services:
       - ./gogs:/data
 
   git-repo-db:
-    image: postgres:10.4
+    image: postgres:${POSTGRES_VERSION}
     ports:
       - "5433:5432"
     environment:

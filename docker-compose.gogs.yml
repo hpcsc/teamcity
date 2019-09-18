@@ -1,0 +1,12 @@
+version: '3'
+services:
+  git-repo:
+    image: gogs/gogs:${GOGS_VERSION}
+    ports:
+      - "10022:22"
+      - "3000:3000"
+    depends_on:
+      - db
+    volumes:
+      - ./gogs/data:/data
+      - ./gogs/app.ini:/etc/gogs/conf/app.ini

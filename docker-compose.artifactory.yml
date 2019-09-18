@@ -1,0 +1,21 @@
+version: '3'
+services:
+  artifactory:
+    image: docker.bintray.io/jfrog/artifactory-oss:${ARTIFACTORY_VERSION}
+    ports:
+     - "8081:8081"
+    depends_on:
+     - db
+    volumes:
+     - ./artifactory/data:/var/opt/jfrog/artifactory
+    environment:
+      DB_TYPE: postgresql
+      DB_HOST: db
+      DB_USER: postgres
+      DB_PASSWORD: postgrespw
+      EXTRA_JAVA_OPTIONS: -Xms512m -Xmx4g
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 32000
+        hard: 40000

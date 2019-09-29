@@ -38,35 +38,37 @@ Password: postgrespw
 ### Configure Gogs
 
 - Navigate to http://localhost:3000
-- Fill in following details:
+- Click Register, fill in information to create an admin account, .e.g.
+
+    ```
+    Username: gogs
+    Email: gogs@email.com
+    Password: password.123
+    ```
+
+- Log in
+
+#### Push repository from host machine to gogs through ssh:
 
 ```
-Database Type: PostgreSQL
-Host: db:5432
-User: postgres
-Password: password.123
-Database Name: gogs
-```
-
-Fill in `Admin Account Settings` at the bottom of the page
-
-- Click `Install Gogs`
-
-Note: to push repository from host machine to gogs through ssh:
-- Log in to gogs at http://localhost:3000
-- Add host machine public key to settings page
-- Create new repository in gogs
-- Add git remote:
-
-```
+./scripts/upload-public-key.sh  # upload default public key from host machine to Gogs
+./scripts/create-git-repo.sh repo-name  # create repo in Gogs
 git remote add gogs ssh://git@localhost:10022/[user]/[repo]
-```
-
-- Execute
-
-```
 git push gogs master
 ```
+
+#### Gogs utilities scripts
+
+If you prefer command-line over Gogs UI, there are several shell scripts in `scripts` folder to automate the most common operations with Gogs:
+
+- `./scripts/generate-token.sh`: this will create an access token with name `default-access-token` in Gogs to perform operations using Gogs REST API. This script is used internally by the 2 scripts below.
+- `./scripts/create-git-repo.sh some-repo`: create git repo in Gogs
+- `./scripts/upload-public-key.sh`: upload your default public key at `~/.ssh/id_rsa.pub` to Gogs server. This is so that you can push to Gogs from your host machine using SSH.
+
+These scripts assume following tools are available in your system:
+
+- [jq](https://stedolan.github.io/jq/)
+- curl
 
 ### Log in to Artifactory
 

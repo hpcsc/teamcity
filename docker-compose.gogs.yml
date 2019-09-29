@@ -8,5 +8,4 @@ services:
     depends_on:
       - db
     volumes:
-      - ./gogs/data:/data
-      - ./gogs/app.ini:/etc/gogs/conf/app.ini
+      - ./gogs/conf:/data/gogs/conf

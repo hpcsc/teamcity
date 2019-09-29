@@ -2,6 +2,17 @@
 
 A docker-compose setup to start up 1 Teamcity server and 3 agents in local for testing
 
+## Table of Contents
+
+* [First time setup](#first-time-setup)
+    * [Configure TeamCity:](#configure-teamcity)
+    * [Configure Gogs](#configure-gogs)
+        * [Push repository from host machine to gogs through ssh:](#push-repository-from-host-machine-to-gogs-through-ssh)
+        * [Gogs utilities scripts](#gogs-utilities-scripts)
+    * [Log in to Artifactory](#log-in-to-artifactory)
+* [Additional Notes](#additional-notes)
+
+
 ## First time setup
 
 This repository includes 2 additional docker-compose files to setup gogs (local git server) and artifactory

@@ -16,7 +16,9 @@ EXISTING_KEY=$(curl -s http://${USERNAME}:${PASSWORD}@localhost:3000/api/v1/user
         jq -r '.[] | select(.name == "'${ACCESS_KEY_NAME}'")')
 
 if [[ -z "${EXISTING_KEY}" ]]; then
-    curl -s \
+    curl --silent \
+         --output /dev/null \
+         --show-error \
          -X POST \
          -H "Content-Type: application/json" \
          -d '{"name":"'${ACCESS_KEY_NAME}'"}' \

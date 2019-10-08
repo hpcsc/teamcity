@@ -12,7 +12,7 @@ fi;
 
 source ./scripts/_read_user_credentials.sh
 
-TOKEN=$(source ./scripts/generate-token.sh | tr -d "\n")
+TOKEN=$(source ./scripts/generate-token.sh "" | tr -d "\n")
 
 curl -H 'Accept:application/json' \
      -H 'Content-Type:application/json' \

@@ -6,7 +6,7 @@ source ./scripts/_read_user_credentials.sh
 
 echo
 
-TOKEN=$(source ./scripts/generate-token.sh | tr -d "\n")
+TOKEN=$(source ./scripts/generate-token.sh "" | tr -d "\n")
 
 EXISTING_KEY=$(curl -s http://localhost:3000/api/v1/users/${USERNAME}/keys \
      -H 'Content-Type:application/json' \

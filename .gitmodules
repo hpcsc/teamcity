@@ -1,0 +1,3 @@
+[submodule "gogs"]
+	path = gogs
+	url = https://github.com/hpcsc/gogs

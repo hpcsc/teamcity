@@ -24,6 +24,7 @@ In `.env` file, there are 3 lines for `COMPOSE_FILE` corresponding to the 3 conf
 Then run:
 
 ```
+git submodule update --init --remote # this is to pull latest changes for gogs submodule
 docker-compose up -d
 ```
 
@@ -62,8 +63,8 @@ Password: postgrespw
 #### Push repository from host machine to gogs through ssh:
 
 ```
-./scripts/upload-public-key.sh  # upload default public key from host machine to Gogs
-./scripts/create-git-repo.sh repo-name  # create repo in Gogs
+./gogs/scripts/upload-public-key.sh  # upload default public key from host machine to Gogs
+./gogs/scripts/create-git-repo.sh repo-name  # create repo in Gogs
 git remote add gogs ssh://git@localhost:10022/[user]/[repo]
 git push gogs master
 ```
@@ -72,9 +73,9 @@ git push gogs master
 
 If you prefer command-line over Gogs UI, there are several shell scripts in `scripts` folder to automate the most common operations with Gogs:
 
-- `./scripts/generate-token.sh`: this will create an access token with name `default-access-token` in Gogs to perform operations using Gogs REST API. This script is used internally by the 2 scripts below.
-- `./scripts/create-git-repo.sh some-repo`: create git repo in Gogs
-- `./scripts/upload-public-key.sh`: upload your default public key at `~/.ssh/id_rsa.pub` to Gogs server. This is so that you can push to Gogs from your host machine using SSH.
+- `./gogs/scripts/generate-token.sh`: this will create an access token with name `default-access-token` in Gogs to perform operations using Gogs REST API. This script is used internally by the 2 scripts below.
+- `./gogs/scripts/create-git-repo.sh some-repo`: create git repo in Gogs
+- `./gogs/scripts/upload-public-key.sh`: upload your default public key at `~/.ssh/id_rsa.pub` to Gogs server. This is so that you can push to Gogs from your host machine using SSH.
 
 These scripts assume following tools are available in your system:
 

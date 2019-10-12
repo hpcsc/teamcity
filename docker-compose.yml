@@ -30,6 +30,7 @@ services:
       SERVER_URL: http://server:8111
     volumes:
       - ./agents/agent-1/conf:/data/teamcity_agent/conf
+      - ./agents/daemon.json:/etc/docker/daemon.json
 
   agent-2:
     image: jetbrains/teamcity-agent:${TEAMCITY_VERSION}
@@ -42,6 +43,7 @@ services:
       SERVER_URL: http://server:8111
     volumes:
       - ./agents/agent-2/conf:/data/teamcity_agent/conf
+      - ./agents/daemon.json:/etc/docker/daemon.json
 
   agent-3:
     image: jetbrains/teamcity-agent:${TEAMCITY_VERSION}
@@ -54,3 +56,4 @@ services:
       SERVER_URL: http://server:8111
     volumes:
       - ./agents/agent-3/conf:/data/teamcity_agent/conf
+      - ./agents/daemon.json:/etc/docker/daemon.json

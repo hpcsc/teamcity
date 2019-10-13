@@ -4,3 +4,6 @@
 [submodule "registry"]
 	path = registry
 	url = https://github.com/hpcsc/registry
+[submodule "sonarqube"]
+	path = sonarqube
+	url = https://github.com/hpcsc/sonarqube

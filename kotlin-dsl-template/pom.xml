@@ -27,6 +27,10 @@
         <enabled>true</enabled>
       </snapshots>
     </repository>
+    <repository>
+      <id>jitpack.io</id>
+      <url>https://jitpack.io</url>
+    </repository>
   </repositories>
 
   <pluginRepositories>
@@ -99,6 +103,11 @@
       <artifactId>kotlin-script-runtime</artifactId>
       <version>${kotlin.version}</version>
       <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.JetBrains</groupId>
+      <artifactId>teamcity-pipelines-dsl</artifactId>
+      <version>0.11</version>
     </dependency>
   </dependencies>
 </project>

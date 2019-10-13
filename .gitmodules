@@ -1,3 +1,6 @@
 [submodule "gogs"]
 	path = gogs
 	url = https://github.com/hpcsc/gogs
+[submodule "registry"]
+	path = registry
+	url = https://github.com/hpcsc/registry

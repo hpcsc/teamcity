@@ -9,7 +9,7 @@ services:
       - ./server/logs:/opt/teamcity/logs
 
   db:
-    image: postgres
+    image: postgres:${POSTGRES_VERSION}
     ports:
       - "5432:5432"
     volumes:

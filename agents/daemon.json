@@ -1,5 +1,9 @@
 {
     "insecure-registries": [
         "registry:5000"
+    ],
+    "registry-mirrors": [
+        "http://docker-hub:5000",
+        "http://mcr:5000"
     ]
 }
